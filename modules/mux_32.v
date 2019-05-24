@@ -1,7 +1,8 @@
 module mux_32(
-	input  [31:0] in1, in2,
-	input  select,
-	output [31:0] out
+  output [31:0] out,
+  input [31:0] in_1, in_2,
+  input select
 );
-	assign out = (~select) ? in1 : in2;
+ assign out = (select == 1'b1)? in_2 : in_1;
+
 endmodule 
