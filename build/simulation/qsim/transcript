@@ -1,0 +1,30 @@
+# do SingleClock.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:47:21 on May 24,2019
+# vlog -work work SingleClock.vo 
+# -- Compiling module SingleClock
+# 
+# Top level modules:
+# 	SingleClock
+# End time: 17:47:22 on May 24,2019, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:47:22 on May 24,2019
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module SingleClock_vlg_vec_tst
+# 
+# Top level modules:
+# 	SingleClock_vlg_vec_tst
+# End time: 17:47:22 on May 24,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -novopt -c -t 1ps -L cycloneiv_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.SingleClock_vlg_vec_tst 
+# Start time: 17:47:23 on May 24,2019
+# Loading work.SingleClock_vlg_vec_tst
+# Loading work.SingleClock
+# Loading cycloneiv_ver.cycloneiv_io_obuf
+# Loading cycloneiv_ver.cycloneiv_io_ibuf
+# after#23
+# ** Note: $finish    : Waveform.vwf.vt(53)
+#    Time: 1 us  Iteration: 0  Instance: /SingleClock_vlg_vec_tst
+# End time: 17:47:24 on May 24,2019, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

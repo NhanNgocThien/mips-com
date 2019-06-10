@@ -1,0 +1,6 @@
+module LCD_decoder(
+	input [3:0] in,
+	output [7:0] out
+);
+	
+endmodule

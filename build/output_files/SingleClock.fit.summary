@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Jun 09 19:14:45 2019
+Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Revision Name : SingleClock
+Top-level Entity Name : SYS_Master
+Family : Cyclone IV GX
+Device : EP4CGX150DF31C7
+Timing Models : Final
+Total logic elements : 1,888 / 149,760 ( 1 % )
+    Total combinational functions : 1,742 / 149,760 ( 1 % )
+    Dedicated logic registers : 635 / 149,760 ( < 1 % )
+Total registers : 635
+Total pins : 115 / 508 ( 23 % )
+Total virtual pins : 0
+Total memory bits : 0 / 6,635,520 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 720 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 8 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 8 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 8 ( 0 % )
+Total PLLs : 0 / 8 ( 0 % )

@@ -1,0 +1,189 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2016  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+# Date created = 16:29:21  May 24, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		SingleClock_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV GX"
+set_global_assignment -name DEVICE EP4CGX150DF31C7
+set_global_assignment -name TOP_LEVEL_ENTITY SYS_Master
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:29:21  MAY 24, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name VERILOG_FILE adder.v
+set_global_assignment -name VERILOG_FILE alu.v
+set_global_assignment -name VERILOG_FILE alu_control.v
+set_global_assignment -name VERILOG_FILE branch.v
+set_global_assignment -name VERILOG_FILE control_unit.v
+set_global_assignment -name VERILOG_FILE data_memory.v
+set_global_assignment -name VERILOG_FILE inst_mem.v
+set_global_assignment -name VERILOG_FILE mux_5.v
+set_global_assignment -name VERILOG_FILE mux_32.v
+set_global_assignment -name VERILOG_FILE pc.v
+set_global_assignment -name VERILOG_FILE register_files.v
+set_global_assignment -name VERILOG_FILE sign_extend.v
+set_global_assignment -name VERILOG_FILE SYS_Master.v
+set_global_assignment -name BDF_FILE Block2.bdf
+set_global_assignment -name VERILOG_FILE error_handle.v
+set_global_assignment -name VERILOG_FILE seven_seg_hex.v
+set_global_assignment -name VERILOG_FILE conv_26_to_4.v
+set_location_assignment PIN_F14 -to HEX0[6]
+set_location_assignment PIN_D16 -to HEX0[5]
+set_location_assignment PIN_F16 -to HEX0[4]
+set_location_assignment PIN_F11 -to HEX0[3]
+set_location_assignment PIN_G11 -to HEX0[2]
+set_location_assignment PIN_E12 -to HEX0[1]
+set_location_assignment PIN_E15 -to HEX0[0]
+set_location_assignment PIN_G10 -to HEX1[6]
+set_location_assignment PIN_J9 -to HEX1[5]
+set_location_assignment PIN_G12 -to HEX1[4]
+set_location_assignment PIN_F12 -to HEX1[3]
+set_location_assignment PIN_G13 -to HEX1[2]
+set_location_assignment PIN_B13 -to HEX1[1]
+set_location_assignment PIN_G14 -to HEX1[0]
+set_location_assignment PIN_F10 -to HEX2[6]
+set_location_assignment PIN_F4 -to HEX2[5]
+set_location_assignment PIN_F6 -to HEX2[4]
+set_location_assignment PIN_AG30 -to HEX2[3]
+set_location_assignment PIN_F7 -to HEX2[2]
+set_location_assignment PIN_G7 -to HEX2[1]
+set_location_assignment PIN_G8 -to HEX2[0]
+set_location_assignment PIN_D4 -to HEX3[6]
+set_location_assignment PIN_D5 -to HEX3[5]
+set_location_assignment PIN_E3 -to HEX3[4]
+set_location_assignment PIN_E4 -to HEX3[3]
+set_location_assignment PIN_E6 -to HEX3[2]
+set_location_assignment PIN_D7 -to HEX3[1]
+set_location_assignment PIN_D10 -to HEX3[0]
+set_location_assignment PIN_C3 -to HEX4[6]
+set_location_assignment PIN_C4 -to HEX4[5]
+set_location_assignment PIN_C5 -to HEX4[4]
+set_location_assignment PIN_C6 -to HEX4[3]
+set_location_assignment PIN_C7 -to HEX4[2]
+set_location_assignment PIN_A13 -to HEX4[1]
+set_location_assignment PIN_A14 -to HEX4[0]
+set_location_assignment PIN_B6 -to HEX5[6]
+set_location_assignment PIN_A11 -to HEX5[5]
+set_location_assignment PIN_A6 -to HEX5[4]
+set_location_assignment PIN_A7 -to HEX5[3]
+set_location_assignment PIN_A9 -to HEX5[2]
+set_location_assignment PIN_A10 -to HEX5[1]
+set_location_assignment PIN_D3 -to HEX5[0]
+set_location_assignment PIN_E9 -to HEX6[6]
+set_location_assignment PIN_D9 -to HEX6[5]
+set_location_assignment PIN_D8 -to HEX6[4]
+set_location_assignment PIN_C9 -to HEX6[3]
+set_location_assignment PIN_C8 -to HEX6[2]
+set_location_assignment PIN_B10 -to HEX6[1]
+set_location_assignment PIN_B9 -to HEX6[0]
+set_location_assignment PIN_D12 -to HEX7[6]
+set_location_assignment PIN_C12 -to HEX7[5]
+set_location_assignment PIN_C11 -to HEX7[4]
+set_location_assignment PIN_C10 -to HEX7[3]
+set_location_assignment PIN_F9 -to HEX7[2]
+set_location_assignment PIN_F8 -to HEX7[1]
+set_location_assignment PIN_E10 -to HEX7[0]
+set_location_assignment PIN_AE26 -to SYS_clk
+set_location_assignment PIN_M22 -to SYS_leds[26]
+set_location_assignment PIN_M21 -to SYS_leds[25]
+set_location_assignment PIN_L25 -to SYS_leds[24]
+set_location_assignment PIN_K24 -to SYS_leds[23]
+set_location_assignment PIN_M25 -to SYS_leds[22]
+set_location_assignment PIN_N21 -to SYS_leds[21]
+set_location_assignment PIN_N24 -to SYS_leds[20]
+set_location_assignment PIN_P21 -to SYS_leds[19]
+set_location_assignment PIN_R24 -to SYS_leds[18]
+set_location_assignment PIN_P25 -to SYS_leds[17]
+set_location_assignment PIN_T27 -to SYS_leds[16]
+set_location_assignment PIN_R25 -to SYS_leds[15]
+set_location_assignment PIN_T26 -to SYS_leds[14]
+set_location_assignment PIN_T21 -to SYS_leds[13]
+set_location_assignment PIN_W25 -to SYS_leds[12]
+set_location_assignment PIN_V27 -to SYS_leds[11]
+set_location_assignment PIN_T24 -to SYS_leds[10]
+set_location_assignment PIN_T23 -to SYS_leds[9]
+set_location_assignment PIN_J25 -to SYS_leds[8]
+set_location_assignment PIN_AA22 -to SYS_leds[7]
+set_location_assignment PIN_Y25 -to SYS_leds[6]
+set_location_assignment PIN_Y22 -to SYS_leds[5]
+set_location_assignment PIN_W26 -to SYS_leds[4]
+set_location_assignment PIN_F26 -to SYS_leds[3]
+set_location_assignment PIN_F27 -to SYS_leds[2]
+set_location_assignment PIN_AB25 -to SYS_leds[1]
+set_location_assignment PIN_AA25 -to SYS_leds[0]
+set_location_assignment PIN_AE25 -to SYS_load
+set_location_assignment PIN_R30 -to SYS_output_sel[7]
+set_location_assignment PIN_T28 -to SYS_output_sel[6]
+set_location_assignment PIN_U21 -to SYS_output_sel[5]
+set_location_assignment PIN_AB30 -to SYS_output_sel[4]
+set_location_assignment PIN_C2 -to SYS_output_sel[3]
+set_location_assignment PIN_V21 -to SYS_output_sel[2]
+set_location_assignment PIN_U30 -to SYS_output_sel[1]
+set_location_assignment PIN_V28 -to SYS_output_sel[0]
+set_location_assignment PIN_K25 -to SYS_pc_load[7]
+set_location_assignment PIN_J26 -to SYS_pc_load[6]
+set_location_assignment PIN_N25 -to SYS_pc_load[5]
+set_location_assignment PIN_M26 -to SYS_pc_load[4]
+set_location_assignment PIN_N26 -to SYS_pc_load[3]
+set_location_assignment PIN_R26 -to SYS_pc_load[2]
+set_location_assignment PIN_R29 -to SYS_pc_load[1]
+set_location_assignment PIN_P30 -to SYS_pc_load[0]
+set_location_assignment PIN_AF30 -to SYS_reset
+set_global_assignment -name VERILOG_FILE LCD_Controller.v
+set_global_assignment -name VERILOG_FILE LCD_TEST.v
+set_global_assignment -name VERILOG_FILE LCD_decoder.v
+set_location_assignment PIN_AJ16 -to CLOCK_50
+set_location_assignment PIN_AE4 -to LCD_DATA[7]
+set_location_assignment PIN_AH4 -to LCD_DATA[6]
+set_location_assignment PIN_AE3 -to LCD_DATA[5]
+set_location_assignment PIN_AH2 -to LCD_DATA[4]
+set_location_assignment PIN_AE5 -to LCD_DATA[3]
+set_location_assignment PIN_AH3 -to LCD_DATA[2]
+set_location_assignment PIN_AF3 -to LCD_DATA[1]
+set_location_assignment PIN_AG4 -to LCD_DATA[0]
+set_location_assignment PIN_AF4 -to LCD_EN
+set_location_assignment PIN_AG3 -to LCD_RS
+set_location_assignment PIN_AJ3 -to LCD_RW
+set_location_assignment PIN_AA26 -to SW
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

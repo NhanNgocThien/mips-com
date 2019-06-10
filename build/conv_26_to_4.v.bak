@@ -1,0 +1,15 @@
+module conv_26_to_4(
+	input [31:0] in,
+	output [31:0] hex
+);
+
+seven_seg_hex hex1 (in[3:0], hex[3:0]);
+seven_seg_hex hex2 (in[7:4], hex[7:4]);
+seven_seg_hex hex3 (in[11:8], hex[11:8]);
+seven_seg_hex hex4 (in[15:12], hex[15:12]);
+seven_seg_hex hex5 (in[19:16], hex[19:16]);
+seven_seg_hex hex6 (in[23:20], hex[23:20]);
+seven_seg_hex hex7 (in[27:24], hex[27:24]);
+seven_seg_hex hex8 (in[31:28], hex[31:28]);
+
+endmodule

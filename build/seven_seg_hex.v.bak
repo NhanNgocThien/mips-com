@@ -1,0 +1,13 @@
+module seven_seg_hex(
+	input [3:0] in,
+	output [6:0] seg
+);
+	assign seg[0] = in[0] | (in[1] & in[3]) | ~(in[1] | in[3]) | (in[2] & in [3]);
+	assign seg[1] = ~in[3] | ~(in[2] | in[3]) | (in[2] & in[3]);
+	assign seg[2] = ~in[2] | in[1] | in[3];
+	assign seg[3] = ~(in[1] | in[3]) | (~in[1] & in[2]) | (in[2] & ~in[3]) | (in[1] & ~in[2] & in[3]); 
+	assign seg[4] = ~(in[1] | in[3]) | (in[2] & ~in[3]);
+	assign seg[5] = in[0] | ~(in[2] | in[3]) | (in[1] | ~in[3]) | (in[1] & ~in[2]);
+	assign seg[6] = in[0] | (in[1] & ~in[2]) | (in[2] & ~in[3]) | (~in[1] & in[2]);
+endmodule
+

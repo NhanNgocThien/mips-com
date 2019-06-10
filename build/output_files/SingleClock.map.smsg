@@ -1,0 +1,6 @@
+Warning (10273): Verilog HDL warning at alu.v(72): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 72
+Warning (10273): Verilog HDL warning at alu.v(76): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 76
+Warning (10273): Verilog HDL warning at control_unit.v(87): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 87
+Warning (10273): Verilog HDL warning at data_memory.v(9): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/data_memory.v Line: 9
+Warning (10273): Verilog HDL warning at inst_mem.v(57): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 57
+Warning (10273): Verilog HDL warning at register_files.v(55): extended using "x" or "z" File: D:/Study Materials/2-182/KTMT/BTL/register_files.v Line: 55

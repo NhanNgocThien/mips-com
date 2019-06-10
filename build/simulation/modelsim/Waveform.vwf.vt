@@ -1,0 +1,172 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "06/04/2019 21:54:05"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          SYS_Master
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module SYS_Master_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg SYS_clk;
+reg SYS_load;
+reg [7:0] SYS_output_sel;
+reg [7:0] SYS_pc_load;
+reg SYS_reset;
+// wires                                               
+wire [0:6] HEX0;
+wire [0:6] HEX1;
+wire [0:6] HEX2;
+wire [0:6] HEX3;
+wire [0:6] HEX4;
+wire [0:6] HEX5;
+wire [0:6] HEX6;
+wire [0:6] HEX7;
+wire [26:0] SYS_leds;
+
+// assign statements (if any)                          
+SYS_Master i1 (
+// port map - connection between master ports and signals/registers   
+	.HEX0(HEX0),
+	.HEX1(HEX1),
+	.HEX2(HEX2),
+	.HEX3(HEX3),
+	.HEX4(HEX4),
+	.HEX5(HEX5),
+	.HEX6(HEX6),
+	.HEX7(HEX7),
+	.SYS_clk(SYS_clk),
+	.SYS_leds(SYS_leds),
+	.SYS_load(SYS_load),
+	.SYS_output_sel(SYS_output_sel),
+	.SYS_pc_load(SYS_pc_load),
+	.SYS_reset(SYS_reset)
+);
+initial 
+begin 
+#1000000 $stop;
+end 
+
+// SYS_clk
+always
+begin
+	SYS_clk = 1'b0;
+	SYS_clk = #50000 1'b1;
+	#50000;
+end 
+
+// SYS_load
+initial
+begin
+	SYS_load = 1'b1;
+end 
+// SYS_output_sel[ 7 ]
+initial
+begin
+	SYS_output_sel[7] = 1'b0;
+end 
+// SYS_output_sel[ 6 ]
+initial
+begin
+	SYS_output_sel[6] = 1'b0;
+end 
+// SYS_output_sel[ 5 ]
+initial
+begin
+	SYS_output_sel[5] = 1'b0;
+end 
+// SYS_output_sel[ 4 ]
+initial
+begin
+	SYS_output_sel[4] = 1'b0;
+end 
+// SYS_output_sel[ 3 ]
+initial
+begin
+	SYS_output_sel[3] = 1'b0;
+end 
+// SYS_output_sel[ 2 ]
+initial
+begin
+	SYS_output_sel[2] = 1'b0;
+end 
+// SYS_output_sel[ 1 ]
+initial
+begin
+	SYS_output_sel[1] = 1'b1;
+end 
+// SYS_output_sel[ 0 ]
+initial
+begin
+	SYS_output_sel[0] = 1'b0;
+end 
+// SYS_pc_load[ 7 ]
+initial
+begin
+	SYS_pc_load[7] = 1'b0;
+end 
+// SYS_pc_load[ 6 ]
+initial
+begin
+	SYS_pc_load[6] = 1'b0;
+end 
+// SYS_pc_load[ 5 ]
+initial
+begin
+	SYS_pc_load[5] = 1'b0;
+end 
+// SYS_pc_load[ 4 ]
+initial
+begin
+	SYS_pc_load[4] = 1'b0;
+end 
+// SYS_pc_load[ 3 ]
+initial
+begin
+	SYS_pc_load[3] = 1'b0;
+end 
+// SYS_pc_load[ 2 ]
+initial
+begin
+	SYS_pc_load[2] = 1'b0;
+end 
+// SYS_pc_load[ 1 ]
+initial
+begin
+	SYS_pc_load[1] = 1'b0;
+end 
+// SYS_pc_load[ 0 ]
+initial
+begin
+	SYS_pc_load[0] = 1'b0;
+end 
+
+// SYS_reset
+initial
+begin
+	SYS_reset = 1'b1;
+end 
+endmodule
+
