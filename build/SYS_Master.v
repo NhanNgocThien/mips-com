@@ -32,7 +32,7 @@ module SYS_Master(
   
   assign SYS_leds = output_sel;
 
-  always@(*) begin
+  always@(negedge SW) begin
 	case(SYS_output_sel)
 		8'd0: begin
 				output_sel = instruction[26:0];
@@ -75,16 +75,22 @@ module SYS_Master(
 				output_hex = exception_sig;
 		end
 		8'd10: begin
-				output_sel = alu_in_2;
-				output_hex = alu_in_2;
+				output_sel = enable;
+				output_hex = enable;
+		end
+		8'd11: begin
+				output_sel = reg_error;
+				output_hex = reg_error;
 		end
 	endcase
   end
-  
-  LCD_TEST LCD(CLOCK_50, SYS_clk, SYS_reset, SYS_load, SW, output_hex, pc_addr, 
-		SYS_output_sel, LCD_DATA, LCD_RW,LCD_EN,LCD_RS);
+
+  lcd lcd(.CLOCK_50(CLOCK_50), .RST(SYS_reset), .CLK(SYS_clk), .LOAD(SYS_load),
+		.SW(SW), .DATA(output_hex), .PC(pc_addr), .SEL(SYS_output_sel),
+				.LCD_DATA(LCD_DATA), .LCD_RW(LCD_RW), .LCD_EN(LCD_EN), .LCD_RS(LCD_RS));
 		
-  conv_26_to_4 converter(output_hex, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
+  conv_26_to_4 converter(output_hex, SYS_reset, SYS_load, SW, 
+		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
 
   pc pc (pc_addr, SYS_clk, SYS_reset, SYS_load, enable, pc_counter, SYS_pc_load);
 

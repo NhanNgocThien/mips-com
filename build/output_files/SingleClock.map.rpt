@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SingleClock
-Sun Jun 09 19:03:15 2019
+Wed Jun 12 13:49:23 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -13,25 +13,24 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |SYS_Master|LCD_TEST:LCD|mLCD_ST
-  9. State Machine - |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0|ST
- 10. User-Specified and Inferred Latches
- 11. Registers Removed During Synthesis
+  8. State Machine - |SYS_Master|lcd:lcd|state
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
  12. General Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: LCD_TEST:LCD
- 15. Parameter Settings for User Entity Instance: LCD_TEST:LCD|LCD_Controller:u0
- 16. Port Connectivity Checks: "branch:branch|adder:Add1"
- 17. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P7"
- 18. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P6"
- 19. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P5"
- 20. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P4"
- 21. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P3"
- 22. Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P2"
- 23. Post-Synthesis Netlist Statistics for Top Partition
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
- 26. Analysis & Synthesis Suppressed Messages
+ 14. Parameter Settings for User Entity Instance: lcd:lcd
+ 15. Port Connectivity Checks: "branch:branch|adder:Add1"
+ 16. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P7"
+ 17. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P6"
+ 18. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P5"
+ 19. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P4"
+ 20. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P3"
+ 21. Port Connectivity Checks: "lcd:lcd|LCD_decoder:P2"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -58,15 +57,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun 09 19:03:15 2019       ;
+; Analysis & Synthesis Status        ; Successful - Wed Jun 12 13:49:23 2019       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; SingleClock                                 ;
 ; Top-level Entity Name              ; SYS_Master                                  ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; 2,255                                       ;
-;     Total combinational functions  ; 1,742                                       ;
-;     Dedicated logic registers      ; 635                                         ;
-; Total registers                    ; 635                                         ;
+; Total logic elements               ; 3,558                                       ;
+;     Total combinational functions  ; 2,217                                       ;
+;     Dedicated logic registers      ; 1,492                                       ;
+; Total registers                    ; 1492                                        ;
 ; Total pins                         ; 115                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -173,14 +172,14 @@ agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.02        ;
+; Average used               ; 1.04        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.7%      ;
-;     Processor 3            ;   0.6%      ;
-;     Processor 4            ;   0.6%      ;
+;     Processor 2            ;   1.4%      ;
+;     Processor 3            ;   1.3%      ;
+;     Processor 4            ;   1.3%      ;
 +----------------------------+-------------+
 
 
@@ -205,9 +204,8 @@ agreement for further details.
 ; error_handle.v                   ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/error_handle.v   ;         ;
 ; seven_seg_hex.v                  ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/seven_seg_hex.v  ;         ;
 ; conv_26_to_4.v                   ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/conv_26_to_4.v   ;         ;
-; LCD_Controller.v                 ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/LCD_Controller.v ;         ;
-; LCD_TEST.v                       ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v       ;         ;
 ; LCD_decoder.v                    ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/LCD_decoder.v    ;         ;
+; lcd.v                            ; yes             ; User Verilog HDL File  ; D:/Study Materials/2-182/KTMT/BTL/lcd.v            ;         ;
 +----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
 
 
@@ -221,9 +219,9 @@ agreement for further details.
 ; DSP block 9-bit elements ; 0                ;
 ;                          ;                  ;
 ; Maximum fan-out node     ; SYS_clk~input    ;
-; Maximum fan-out          ; 587              ;
-; Total fan-out            ; 8827             ;
-; Average fan-out          ; 3.39             ;
+; Maximum fan-out          ; 1407             ;
+; Total fan-out            ; 13721            ;
+; Average fan-out          ; 3.48             ;
 +--------------------------+------------------+
 
 
@@ -232,26 +230,12 @@ agreement for further details.
 +--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                    ; Entity Name    ; Library Name ;
 +--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------------------+----------------+--------------+
-; |SYS_Master                    ; 1742 (202)          ; 635 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 115  ; 0            ; |SYS_Master                                            ; SYS_Master     ; work         ;
-;    |LCD_TEST:LCD|              ; 238 (157)           ; 51 (38)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD                               ; LCD_TEST       ; work         ;
-;       |LCD_Controller:u0|      ; 29 (29)             ; 13 (13)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0             ; LCD_Controller ; work         ;
-;       |LCD_decoder:L0|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L0                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L1|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L1                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L2|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L2                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L3|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L3                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L4|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L4                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L5|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L5                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L6|         ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L6                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:L7|         ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:L7                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:P0|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:P0                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:P1|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:P1                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:S0|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:S0                ; LCD_decoder    ; work         ;
-;       |LCD_decoder:S1|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|LCD_TEST:LCD|LCD_decoder:S1                ; LCD_decoder    ; work         ;
-;    |alu:alu|                   ; 264 (264)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|alu:alu                                    ; alu            ; work         ;
+; |SYS_Master                    ; 2217 (199)          ; 1492 (59)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 115  ; 0            ; |SYS_Master                                            ; SYS_Master     ; work         ;
+;    |alu:alu|                   ; 262 (262)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|alu:alu                                    ; alu            ; work         ;
 ;    |alu_control:alu_control|   ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|alu_control:alu_control                    ; alu_control    ; work         ;
-;    |branch:branch|             ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch                              ; branch         ; work         ;
+;    |branch:branch|             ; 67 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch                              ; branch         ; work         ;
 ;       |adder:Add1|             ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch|adder:Add1                   ; adder          ; work         ;
-;       |adder:Add3|             ; 38 (38)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch|adder:Add3                   ; adder          ; work         ;
+;       |adder:Add3|             ; 36 (36)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch|adder:Add3                   ; adder          ; work         ;
 ;       |mux_32:M2|              ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|branch:branch|mux_32:M2                    ; mux_32         ; work         ;
 ;    |control_unit:control_unit| ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|control_unit:control_unit                  ; control_unit   ; work         ;
 ;    |conv_26_to_4:converter|    ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|conv_26_to_4:converter                     ; conv_26_to_4   ; work         ;
@@ -263,125 +247,66 @@ agreement for further details.
 ;       |seven_seg_hex:hex_5|    ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|conv_26_to_4:converter|seven_seg_hex:hex_5 ; seven_seg_hex  ; work         ;
 ;       |seven_seg_hex:hex_6|    ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|conv_26_to_4:converter|seven_seg_hex:hex_6 ; seven_seg_hex  ; work         ;
 ;       |seven_seg_hex:hex_7|    ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|conv_26_to_4:converter|seven_seg_hex:hex_7 ; seven_seg_hex  ; work         ;
-;    |data_memory:data_mem|      ; 61 (61)             ; 80 (80)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|data_memory:data_mem                       ; data_memory    ; work         ;
-;    |error_handle:exception|    ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|error_handle:exception                     ; error_handle   ; work         ;
-;    |inst_mem:i_mem|            ; 68 (68)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|inst_mem:i_mem                             ; inst_mem       ; work         ;
+;    |data_memory:data_mem|      ; 445 (445)           ; 640 (640)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|data_memory:data_mem                       ; data_memory    ; work         ;
+;    |error_handle:exception|    ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|error_handle:exception                     ; error_handle   ; work         ;
+;    |inst_mem:i_mem|            ; 78 (78)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|inst_mem:i_mem                             ; inst_mem       ; work         ;
+;    |lcd:lcd|                   ; 189 (137)           ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd                                    ; lcd            ; work         ;
+;       |LCD_decoder:H0|         ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H0                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H1|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H1                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H2|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H2                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H3|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H3                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H4|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H4                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H5|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H5                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H6|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H6                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:H7|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:H7                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:P0|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:P0                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:P1|         ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:P1                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:S0|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:S0                     ; LCD_decoder    ; work         ;
+;       |LCD_decoder:S1|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|lcd:lcd|LCD_decoder:S1                     ; LCD_decoder    ; work         ;
 ;    |mux_32:M2|                 ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|mux_32:M2                                  ; mux_32         ; work         ;
-;    |mux_32:M3|                 ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|mux_32:M3                                  ; mux_32         ; work         ;
+;    |mux_32:M3|                 ; 33 (33)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|mux_32:M3                                  ; mux_32         ; work         ;
 ;    |mux_5:M1|                  ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|mux_5:M1                                   ; mux_5          ; work         ;
-;    |pc:pc|                     ; 56 (56)             ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|pc:pc                                      ; pc             ; work         ;
-;    |register_files:reg_file|   ; 631 (631)           ; 474 (474)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|register_files:reg_file                    ; register_files ; work         ;
+;    |pc:pc|                     ; 55 (55)             ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|pc:pc                                      ; pc             ; work         ;
+;    |register_files:reg_file|   ; 767 (767)           ; 736 (736)                 ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |SYS_Master|register_files:reg_file                    ; register_files ; work         ;
 +--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------+
-; State Machine - |SYS_Master|LCD_TEST:LCD|mLCD_ST                                   ;
-+----------------+----------------+----------------+----------------+----------------+
-; Name           ; mLCD_ST.000011 ; mLCD_ST.000010 ; mLCD_ST.000001 ; mLCD_ST.000000 ;
-+----------------+----------------+----------------+----------------+----------------+
-; mLCD_ST.000000 ; 0              ; 0              ; 0              ; 0              ;
-; mLCD_ST.000001 ; 0              ; 0              ; 1              ; 1              ;
-; mLCD_ST.000010 ; 0              ; 1              ; 0              ; 1              ;
-; mLCD_ST.000011 ; 1              ; 0              ; 0              ; 1              ;
-+----------------+----------------+----------------+----------------+----------------+
++--------------------------------------------------------------------------+
+; State Machine - |SYS_Master|lcd:lcd|state                                ;
++--------------+--------------+--------------+--------------+--------------+
+; Name         ; state.S_LOAD ; state.S_PUSH ; state.S_IDLE ; state.S_INIT ;
++--------------+--------------+--------------+--------------+--------------+
+; state.S_INIT ; 0            ; 0            ; 0            ; 0            ;
+; state.S_IDLE ; 0            ; 0            ; 1            ; 1            ;
+; state.S_PUSH ; 0            ; 1            ; 0            ; 1            ;
+; state.S_LOAD ; 1            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+
 
 
-Encoding Type:  One-Hot
-+---------------------------------------------------------------+
-; State Machine - |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0|ST ;
-+-------+-------+-------+-------+-------------------------------+
-; Name  ; ST.11 ; ST.10 ; ST.01 ; ST.00                         ;
-+-------+-------+-------+-------+-------------------------------+
-; ST.00 ; 0     ; 0     ; 0     ; 0                             ;
-; ST.01 ; 0     ; 0     ; 1     ; 1                             ;
-; ST.10 ; 0     ; 1     ; 0     ; 1                             ;
-; ST.11 ; 1     ; 0     ; 0     ; 1                             ;
-+-------+-------+-------+-------+-------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                ;
-+-----------------------------------------------------+-------------------------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal                 ; Free of Timing Hazards ;
-+-----------------------------------------------------+-------------------------------------+------------------------+
-; output_sel[0]                                       ; WideOr0                             ; yes                    ;
-; output_sel[1]                                       ; WideOr0                             ; yes                    ;
-; output_sel[2]                                       ; WideOr0                             ; yes                    ;
-; output_sel[3]                                       ; WideOr0                             ; yes                    ;
-; output_sel[4]                                       ; WideOr0                             ; yes                    ;
-; output_sel[5]                                       ; WideOr0                             ; yes                    ;
-; output_sel[6]                                       ; WideOr0                             ; yes                    ;
-; output_sel[7]                                       ; WideOr0                             ; yes                    ;
-; output_sel[8]                                       ; WideOr0                             ; yes                    ;
-; output_sel[9]                                       ; WideOr0                             ; yes                    ;
-; output_sel[10]                                      ; WideOr0                             ; yes                    ;
-; output_sel[11]                                      ; WideOr0                             ; yes                    ;
-; output_sel[12]                                      ; WideOr0                             ; yes                    ;
-; output_sel[13]                                      ; WideOr0                             ; yes                    ;
-; output_sel[14]                                      ; WideOr0                             ; yes                    ;
-; output_sel[15]                                      ; WideOr0                             ; yes                    ;
-; output_sel[16]                                      ; WideOr0                             ; yes                    ;
-; output_sel[17]                                      ; WideOr0                             ; yes                    ;
-; output_sel[18]                                      ; WideOr0                             ; yes                    ;
-; output_sel[19]                                      ; WideOr0                             ; yes                    ;
-; output_sel[20]                                      ; WideOr0                             ; yes                    ;
-; output_sel[21]                                      ; WideOr0                             ; yes                    ;
-; output_sel[22]                                      ; WideOr0                             ; yes                    ;
-; output_sel[23]                                      ; WideOr0                             ; yes                    ;
-; output_sel[24]                                      ; WideOr0                             ; yes                    ;
-; output_sel[25]                                      ; WideOr0                             ; yes                    ;
-; output_sel[26]                                      ; WideOr0                             ; yes                    ;
-; output_hex[0]                                       ; WideOr0                             ; yes                    ;
-; output_hex[1]                                       ; WideOr0                             ; yes                    ;
-; output_hex[2]                                       ; WideOr0                             ; yes                    ;
-; output_hex[3]                                       ; WideOr0                             ; yes                    ;
-; output_hex[4]                                       ; WideOr0                             ; yes                    ;
-; output_hex[5]                                       ; WideOr0                             ; yes                    ;
-; output_hex[6]                                       ; WideOr0                             ; yes                    ;
-; output_hex[7]                                       ; WideOr0                             ; yes                    ;
-; output_hex[8]                                       ; WideOr0                             ; yes                    ;
-; output_hex[9]                                       ; WideOr0                             ; yes                    ;
-; output_hex[10]                                      ; WideOr0                             ; yes                    ;
-; output_hex[11]                                      ; WideOr0                             ; yes                    ;
-; output_hex[12]                                      ; WideOr0                             ; yes                    ;
-; output_hex[13]                                      ; WideOr0                             ; yes                    ;
-; output_hex[14]                                      ; WideOr0                             ; yes                    ;
-; output_hex[15]                                      ; WideOr0                             ; yes                    ;
-; output_hex[16]                                      ; WideOr0                             ; yes                    ;
-; output_hex[17]                                      ; WideOr0                             ; yes                    ;
-; output_hex[18]                                      ; WideOr0                             ; yes                    ;
-; output_hex[19]                                      ; WideOr0                             ; yes                    ;
-; output_hex[20]                                      ; WideOr0                             ; yes                    ;
-; output_hex[21]                                      ; WideOr0                             ; yes                    ;
-; output_hex[22]                                      ; WideOr0                             ; yes                    ;
-; output_hex[23]                                      ; WideOr0                             ; yes                    ;
-; output_hex[24]                                      ; WideOr0                             ; yes                    ;
-; output_hex[25]                                      ; WideOr0                             ; yes                    ;
-; output_hex[26]                                      ; WideOr0                             ; yes                    ;
-; output_hex[27]                                      ; WideOr0                             ; yes                    ;
-; output_hex[28]                                      ; WideOr0                             ; yes                    ;
-; output_hex[29]                                      ; WideOr0                             ; yes                    ;
-; output_hex[30]                                      ; WideOr0                             ; yes                    ;
-; output_hex[31]                                      ; WideOr0                             ; yes                    ;
-; control_unit:control_unit|master_control[2]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[5]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[4]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[0]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[6]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[1]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[7]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; alu:alu|status[6]                                   ; alu:alu|WideOr0                     ; yes                    ;
-; alu:alu|status[3]                                   ; alu:alu|WideOr0                     ; yes                    ;
-; control_unit:control_unit|master_control[8]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; control_unit:control_unit|master_control[9]         ; inst_mem:i_mem|imem_instruction[30] ; yes                    ;
-; alu:alu|status[7]                                   ; alu:alu|Selector0                   ; yes                    ;
-; alu:alu|status[4]                                   ; alu:alu|Selector0                   ; yes                    ;
-; alu:alu|status[5]                                   ; alu:alu|WideOr0                     ; yes                    ;
-; alu:alu|out_signed[32]                              ; alu:alu|WideOr0                     ; yes                    ;
-; Number of user-specified and inferred latches = 74  ;                                     ;                        ;
-+-----------------------------------------------------+-------------------------------------+------------------------+
++-------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                   ;
++-----------------------------------------------------+------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal    ; Free of Timing Hazards ;
++-----------------------------------------------------+------------------------+------------------------+
+; control_unit:control_unit|master_control[2]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[5]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[4]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[0]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; alu:alu|status[6]                                   ; alu:alu|WideOr0        ; yes                    ;
+; alu:alu|status[3]                                   ; alu:alu|WideOr0        ; yes                    ;
+; control_unit:control_unit|master_control[7]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[8]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[6]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[1]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; control_unit:control_unit|master_control[9]         ; inst_mem:i_mem|Equal11 ; yes                    ;
+; alu:alu|status[7]                                   ; alu:alu|Selector0      ; yes                    ;
+; alu:alu|status[4]                                   ; alu:alu|Selector0      ; yes                    ;
+; alu:alu|status[5]                                   ; alu:alu|WideOr0        ; yes                    ;
+; alu:alu|out_signed[32]                              ; alu:alu|WideOr0        ; yes                    ;
+; Number of user-specified and inferred latches = 15  ;                        ;                        ;
++-----------------------------------------------------+------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
@@ -390,569 +315,318 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------------------------------+----------------------------------------+
 ; Register name                              ; Reason for Removal                     ;
 +--------------------------------------------+----------------------------------------+
-; register_files:reg_file|reg_memory[21][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][0]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[21][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[20][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[19][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[18][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[17][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[16][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[29][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[28][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[27][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[26][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[25][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[24][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][7]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][6]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][5]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][4]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][3]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[22][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[0][1]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[22][0]  ; Lost fanout                            ;
 ; register_files:reg_file|reg_memory[0][0]   ; Stuck at GND due to stuck port data_in ;
-; register_files:reg_file|reg_memory[30][31] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][31]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][31]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][31]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][30] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][30]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][30]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][30]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][29] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][29]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][29]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][29]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][28] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][28]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][28]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][28]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][27] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][27]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][27]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][27]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][26] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][26]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][26]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][26]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][25] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][25]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][25]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][25]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][24] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][24]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][24]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][24]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][23] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][23]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][23]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][23]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][22] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][22]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][22]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][22]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][21] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][21]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][21]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][21]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][20] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][20]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][20]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][20]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][19] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][19]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][19]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][19]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][18] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][18]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][18]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][18]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][17] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][17]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][17]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][17]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][16] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][16]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][16]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][16]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][15] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][15]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][15]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][15]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][14] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][14]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][14]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][14]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][13] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][13]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][13]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][13]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][12] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][12]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][12]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][12]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][11] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][11]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][11]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][11]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][10] ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][10]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][10]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][10]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][9]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][9]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][9]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][9]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][8]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][8]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][8]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][8]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][7]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][7]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][7]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][7]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][6]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][6]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][6]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][6]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][5]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][5]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][5]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][5]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][4]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][4]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][4]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][4]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][3]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][3]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][3]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][3]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][2]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][2]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][2]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][2]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][1]  ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[4][1]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][1]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][1]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[30][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[0][31]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][30]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][29]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][28]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][27]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][26]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][25]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][24]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][23]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][22]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][21]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][20]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][19]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][18]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][17]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][16]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][15]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][14]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][13]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][12]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][11]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][10]  ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][9]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][8]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][7]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][6]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][5]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][4]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][3]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][2]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[0][1]   ; Stuck at GND due to stuck port data_in ;
+; register_files:reg_file|reg_memory[16][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[16][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[17][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[18][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[19][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][0]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][31] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][30] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][29] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][28] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][27] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][26] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][25] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][24] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][23] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][22] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][21] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][20] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][19] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][18] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][17] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][16] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][15] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][14] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][13] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][12] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][11] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][10] ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][9]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][8]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][7]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][6]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][5]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][4]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][3]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][2]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[20][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[21][1]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[22][1]  ; Lost fanout                            ;
 ; register_files:reg_file|reg_memory[4][0]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[6][0]   ; Lost fanout                            ;
-; register_files:reg_file|reg_memory[7][0]   ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~6                     ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~7                     ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~8                     ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~9                     ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~10                    ; Lost fanout                            ;
-; LCD_TEST:LCD|mLCD_ST~11                    ; Lost fanout                            ;
-; LCD_TEST:LCD|LCD_Controller:u0|ST~6        ; Lost fanout                            ;
-; LCD_TEST:LCD|LCD_Controller:u0|ST~7        ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][31]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][30]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][29]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][28]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][27]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][26]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][25]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][24]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][23]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][22]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][21]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][20]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][19]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][18]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][17]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][16]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][15]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][14]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][13]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][12]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][11]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][10]  ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][9]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][8]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][7]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][6]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][5]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][4]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][3]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][2]   ; Lost fanout                            ;
+; register_files:reg_file|reg_memory[4][1]   ; Lost fanout                            ;
+; lcd:lcd|state~4                            ; Lost fanout                            ;
+; lcd:lcd|state~5                            ; Lost fanout                            ;
+; lcd:lcd|state~6                            ; Lost fanout                            ;
+; lcd:lcd|CLOCK[16..23]                      ; Lost fanout                            ;
 ; pc:pc|imem_instruction[0]~_emulated        ; Stuck at GND due to stuck port clock   ;
 ; pc:pc|imem_instruction[1]~_emulated        ; Stuck at GND due to stuck port clock   ;
-; Total Number of Removed Registers = 561    ;                                        ;
+; Total Number of Removed Registers = 301    ;                                        ;
 +--------------------------------------------+----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                       ;
++------------------------------------------+---------------------------+--------------------------------------------+
+; Register name                            ; Reason for Removal        ; Registers Removed due to This Register     ;
++------------------------------------------+---------------------------+--------------------------------------------+
+; register_files:reg_file|reg_memory[0][0] ; Stuck at GND              ; register_files:reg_file|reg_memory[16][0], ;
+;                                          ; due to stuck port data_in ; register_files:reg_file|reg_memory[17][0], ;
+;                                          ;                           ; register_files:reg_file|reg_memory[18][0], ;
+;                                          ;                           ; register_files:reg_file|reg_memory[19][0]  ;
+; register_files:reg_file|reg_memory[0][1] ; Stuck at GND              ; register_files:reg_file|reg_memory[16][1], ;
+;                                          ; due to stuck port data_in ; register_files:reg_file|reg_memory[17][1], ;
+;                                          ;                           ; register_files:reg_file|reg_memory[18][1], ;
+;                                          ;                           ; register_files:reg_file|reg_memory[19][1]  ;
++------------------------------------------+---------------------------+--------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -960,12 +634,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 635   ;
-; Number of registers using Synchronous Clear  ; 29    ;
-; Number of registers using Synchronous Load   ; 29    ;
-; Number of registers using Asynchronous Clear ; 584   ;
+; Total registers                              ; 1492  ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 28    ;
+; Number of registers using Asynchronous Clear ; 1112  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 597   ;
+; Number of registers using Clock Enable       ; 1434  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -975,54 +649,32 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0|Cont[3]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |SYS_Master|LCD_TEST:LCD|mLCD_DATA[7]               ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |SYS_Master|LCD_TEST:LCD|LUT_INDEX[4]               ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0|mStart   ;
-; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |SYS_Master|LCD_TEST:LCD|mDLY[1]                    ;
-; 66:1               ; 5 bits    ; 220 LEs       ; 120 LEs              ; 100 LEs                ; Yes        ; |SYS_Master|LCD_TEST:LCD|mLCD_DATA[1]               ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |SYS_Master|LCD_TEST:LCD|LCD_Controller:u0|ST       ;
+; 18:1               ; 54 bits   ; 648 LEs       ; 54 LEs               ; 594 LEs                ; Yes        ; |SYS_Master|output_sel[3]                           ;
+; 256:1              ; 4 bits    ; 680 LEs       ; 16 LEs               ; 664 LEs                ; Yes        ; |SYS_Master|output_hex[27]                          ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; No         ; |SYS_Master|Selector22                              ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |SYS_Master|alu_control:alu_control|Mux1            ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |SYS_Master|LCD_TEST:LCD|mLCD_ST                    ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |SYS_Master|Selector52                              ;
-; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; No         ; |SYS_Master|alu:alu|Mux5                            ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |SYS_Master|data_memory:data_mem|Mux3               ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |SYS_Master|Selector19                              ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |SYS_Master|Selector12                              ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |SYS_Master|Selector37                              ;
-; 8:1                ; 5 bits    ; 25 LEs        ; 20 LEs               ; 5 LEs                  ; No         ; |SYS_Master|Selector42                              ;
-; 11:1               ; 4 bits    ; 28 LEs        ; 20 LEs               ; 8 LEs                  ; No         ; |SYS_Master|Selector32                              ;
-; 3:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; No         ; |SYS_Master|Selector24                              ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SYS_Master|Selector37                              ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |SYS_Master|LCD_TEST:LCD|mLCD_ST                    ;
-; 21:1               ; 32 bits   ; 448 LEs       ; 320 LEs              ; 128 LEs                ; No         ; |SYS_Master|register_files:reg_file|read_data_1[23] ;
-; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |SYS_Master|Selector27                              ;
-; 25:1               ; 24 bits   ; 384 LEs       ; 288 LEs              ; 96 LEs                 ; No         ; |SYS_Master|register_files:reg_file|read_data_2[22] ;
-; 25:1               ; 8 bits    ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; No         ; |SYS_Master|register_files:reg_file|read_data_2[4]  ;
+; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; No         ; |SYS_Master|alu:alu|Mux3                            ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |SYS_Master|register_files:reg_file|read_data_1[12] ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |SYS_Master|register_files:reg_file|read_data_2[10] ;
+; 20:1               ; 32 bits   ; 416 LEs       ; 416 LEs              ; 0 LEs                  ; No         ; |SYS_Master|data_memory:data_mem|Mux18              ;
+; 64:1               ; 5 bits    ; 210 LEs       ; 110 LEs              ; 100 LEs                ; No         ; |SYS_Master|lcd:lcd|Mux7                            ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 64 LEs               ; 16 LEs                 ; No         ; |SYS_Master|Selector13                              ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |SYS_Master|Selector16                              ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |SYS_Master|Selector25                              ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 20 LEs               ; 5 LEs                  ; No         ; |SYS_Master|Selector20                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
 
 
-+-----------------------------------------------------------+
-; Parameter Settings for User Entity Instance: LCD_TEST:LCD ;
-+----------------+-------+----------------------------------+
-; Parameter Name ; Value ; Type                             ;
-+----------------+-------+----------------------------------+
-; LCD_INTIAL     ; 0     ; Signed Integer                   ;
-; LCD_LINE1      ; 5     ; Signed Integer                   ;
-; LCD_CH_LINE    ; 21    ; Signed Integer                   ;
-; LCD_LINE2      ; 22    ; Signed Integer                   ;
-; LUT_SIZE       ; 38    ; Signed Integer                   ;
-+----------------+-------+----------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: LCD_TEST:LCD|LCD_Controller:u0 ;
-+----------------+-------+----------------------------------------------------+
-; Parameter Name ; Value ; Type                                               ;
-+----------------+-------+----------------------------------------------------+
-; CLK_Divide     ; 16    ; Signed Integer                                     ;
-+----------------+-------+----------------------------------------------------+
++------------------------------------------------------+
+; Parameter Settings for User Entity Instance: lcd:lcd ;
++----------------+-------+-----------------------------+
+; Parameter Name ; Value ; Type                        ;
++----------------+-------+-----------------------------+
+; S_INIT         ; 0     ; Signed Integer              ;
+; S_IDLE         ; 1     ; Signed Integer              ;
+; S_PUSH         ; 2     ; Signed Integer              ;
+; S_LOAD         ; 3     ; Signed Integer              ;
++----------------+-------+-----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1038,7 +690,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P7"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P7"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1047,7 +699,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P6"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P6"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1056,7 +708,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P5"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P5"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1065,7 +717,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P4"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P4"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1074,7 +726,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P3"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P3"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1083,7 +735,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "LCD_TEST:LCD|LCD_decoder:P2"                                                        ;
+; Port Connectivity Checks: "lcd:lcd|LCD_decoder:P2"                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1097,27 +749,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 115                         ;
-; cycloneiii_ff         ; 635                         ;
-;     CLR               ; 7                           ;
+; cycloneiii_ff         ; 1492                        ;
+;     CLR               ; 32                          ;
 ;     CLR SLD           ; 24                          ;
-;     ENA               ; 15                          ;
-;     ENA CLR           ; 553                         ;
-;     ENA SCLR          ; 24                          ;
-;     ENA SCLR SLD      ; 5                           ;
-;     plain             ; 7                           ;
-; cycloneiii_lcell_comb ; 1751                        ;
-;     arith             ; 242                         ;
-;         2 data inputs ; 55                          ;
-;         3 data inputs ; 187                         ;
-;     normal            ; 1509                        ;
+;     ENA               ; 374                         ;
+;     ENA CLR           ; 1056                        ;
+;     ENA SCLR SLD      ; 4                           ;
+;     plain             ; 2                           ;
+; cycloneiii_lcell_comb ; 2226                        ;
+;     arith             ; 235                         ;
+;         2 data inputs ; 47                          ;
+;         3 data inputs ; 188                         ;
+;     normal            ; 1991                        ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 12                          ;
-;         2 data inputs ; 102                         ;
-;         3 data inputs ; 370                         ;
-;         4 data inputs ; 1023                        ;
+;         2 data inputs ; 62                          ;
+;         3 data inputs ; 522                         ;
+;         4 data inputs ; 1393                        ;
 ;                       ;                             ;
-; Max LUT depth         ; 30.10                       ;
-; Average LUT depth     ; 19.16                       ;
+; Max LUT depth         ; 25.10                       ;
+; Average LUT depth     ; 16.11                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1126,7 +777,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:11     ;
+; Top            ; 00:00:24     ;
 +----------------+--------------+
 
 
@@ -1136,7 +787,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Jun 09 19:02:50 2019
+    Info: Processing started: Wed Jun 12 13:48:44 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SingleClock -c SingleClock
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1174,96 +825,26 @@ Info (12021): Found 1 design units, including 1 entities, in source file seven_s
     Info (12023): Found entity 1: seven_seg_hex File: D:/Study Materials/2-182/KTMT/BTL/seven_seg_hex.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file conv_26_to_4.v
     Info (12023): Found entity 1: conv_26_to_4 File: D:/Study Materials/2-182/KTMT/BTL/conv_26_to_4.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file lcd_controller.v
-    Info (12023): Found entity 1: LCD_Controller File: D:/Study Materials/2-182/KTMT/BTL/LCD_Controller.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file lcd_test.v
-    Info (12023): Found entity 1: LCD_TEST File: D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file lcd_decoder.v
     Info (12023): Found entity 1: LCD_decoder File: D:/Study Materials/2-182/KTMT/BTL/LCD_decoder.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lcd.v
+    Info (12023): Found entity 1: lcd File: D:/Study Materials/2-182/KTMT/BTL/lcd.v Line: 1
 Info (12127): Elaborating entity "SYS_Master" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at SYS_Master.v(66): truncated value with size 32 to match size of target (27) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 66
-Warning (10230): Verilog HDL assignment warning at SYS_Master.v(78): truncated value with size 32 to match size of target (27) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 78
-Warning (10270): Verilog HDL Case Statement warning at SYS_Master.v(36): incomplete case statement has no default case item File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Warning (10240): Verilog HDL Always Construct warning at SYS_Master.v(36): inferring latch(es) for variable "output_sel", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Warning (10240): Verilog HDL Always Construct warning at SYS_Master.v(36): inferring latch(es) for variable "output_hex", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[0]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[1]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[2]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[3]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[4]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[5]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[6]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[7]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[8]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[9]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[10]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[11]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[12]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[13]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[14]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[15]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[16]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[17]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[18]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[19]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[20]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[21]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[22]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[23]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[24]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[25]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[26]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[27]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[28]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[29]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[30]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_hex[31]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[0]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[1]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[2]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[3]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[4]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[5]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[6]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[7]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[8]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[9]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[10]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[11]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[12]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[13]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[14]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[15]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[16]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[17]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[18]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[19]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[20]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[21]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[22]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[23]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[24]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[25]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (10041): Inferred latch for "output_sel[26]" at SYS_Master.v(36) File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Info (12128): Elaborating entity "LCD_TEST" for hierarchy "LCD_TEST:LCD" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 85
-Warning (10230): Verilog HDL assignment warning at LCD_TEST.v(80): truncated value with size 32 to match size of target (18) File: D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v Line: 80
-Warning (10230): Verilog HDL assignment warning at LCD_TEST.v(88): truncated value with size 32 to match size of target (6) File: D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v Line: 88
-Info (12128): Elaborating entity "LCD_decoder" for hierarchy "LCD_TEST:LCD|LCD_decoder:L0" File: D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v Line: 21
-Info (12128): Elaborating entity "LCD_Controller" for hierarchy "LCD_TEST:LCD|LCD_Controller:u0" File: D:/Study Materials/2-182/KTMT/BTL/LCD_TEST.v Line: 154
-Warning (10230): Verilog HDL assignment warning at LCD_Controller.v(66): truncated value with size 32 to match size of target (5) File: D:/Study Materials/2-182/KTMT/BTL/LCD_Controller.v Line: 66
-Info (12128): Elaborating entity "conv_26_to_4" for hierarchy "conv_26_to_4:converter" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 87
-Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "conv_26_to_4:converter|seven_seg_hex:hex_0" File: D:/Study Materials/2-182/KTMT/BTL/conv_26_to_4.v Line: 6
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pc" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 89
-Info (12128): Elaborating entity "branch" for hierarchy "branch:branch" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 92
+Info (12128): Elaborating entity "lcd" for hierarchy "lcd:lcd" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 90
+Warning (10230): Verilog HDL assignment warning at lcd.v(52): truncated value with size 32 to match size of target (24) File: D:/Study Materials/2-182/KTMT/BTL/lcd.v Line: 52
+Warning (10230): Verilog HDL assignment warning at lcd.v(72): truncated value with size 32 to match size of target (6) File: D:/Study Materials/2-182/KTMT/BTL/lcd.v Line: 72
+Info (12128): Elaborating entity "LCD_decoder" for hierarchy "lcd:lcd|LCD_decoder:H0" File: D:/Study Materials/2-182/KTMT/BTL/lcd.v Line: 27
+Info (12128): Elaborating entity "conv_26_to_4" for hierarchy "conv_26_to_4:converter" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 93
+Critical Warning (10237): Verilog HDL warning at conv_26_to_4.v(10): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: D:/Study Materials/2-182/KTMT/BTL/conv_26_to_4.v Line: 10
+Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "conv_26_to_4:converter|seven_seg_hex:hex_0" File: D:/Study Materials/2-182/KTMT/BTL/conv_26_to_4.v Line: 14
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pc" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 95
+Info (12128): Elaborating entity "branch" for hierarchy "branch:branch" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 98
 Info (12128): Elaborating entity "adder" for hierarchy "branch:branch|adder:Add1" File: D:/Study Materials/2-182/KTMT/BTL/branch.v Line: 11
 Info (12128): Elaborating entity "mux_32" for hierarchy "branch:branch|mux_32:M1" File: D:/Study Materials/2-182/KTMT/BTL/branch.v Line: 14
-Info (12128): Elaborating entity "inst_mem" for hierarchy "inst_mem:i_mem" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 94
+Info (12128): Elaborating entity "inst_mem" for hierarchy "inst_mem:i_mem" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 100
 Warning (10762): Verilog HDL Case Statement warning at inst_mem.v(10): can't check case statement for completeness because the case expression has too many possible states File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 10
-Warning (10272): Verilog HDL Case Statement warning at inst_mem.v(47): case item expression covers a value already covered by a previous case item File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 47
-Warning (10272): Verilog HDL Case Statement warning at inst_mem.v(49): case item expression covers a value already covered by a previous case item File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 49
-Warning (10272): Verilog HDL Case Statement warning at inst_mem.v(51): case item expression covers a value already covered by a previous case item File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 51
-Warning (10272): Verilog HDL Case Statement warning at inst_mem.v(53): case item expression covers a value already covered by a previous case item File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 53
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_unit" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 96
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_unit" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 102
 Warning (10240): Verilog HDL Always Construct warning at control_unit.v(25): inferring latch(es) for variable "master_control", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Info (10041): Inferred latch for "master_control[0]" at control_unit.v(25) File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Info (10041): Inferred latch for "master_control[1]" at control_unit.v(25) File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
@@ -1274,11 +855,11 @@ Info (10041): Inferred latch for "master_control[6]" at control_unit.v(25) File:
 Info (10041): Inferred latch for "master_control[7]" at control_unit.v(25) File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Info (10041): Inferred latch for "master_control[8]" at control_unit.v(25) File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Info (10041): Inferred latch for "master_control[9]" at control_unit.v(25) File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
-Info (12128): Elaborating entity "alu_control" for hierarchy "alu_control:alu_control" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 99
-Info (12128): Elaborating entity "mux_5" for hierarchy "mux_5:M1" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 102
-Info (12128): Elaborating entity "register_files" for hierarchy "register_files:reg_file" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 105
-Info (12128): Elaborating entity "sign_extend" for hierarchy "sign_extend:sign_extend" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 110
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 113
+Info (12128): Elaborating entity "alu_control" for hierarchy "alu_control:alu_control" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 105
+Info (12128): Elaborating entity "mux_5" for hierarchy "mux_5:M1" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 108
+Info (12128): Elaborating entity "register_files" for hierarchy "register_files:reg_file" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 111
+Info (12128): Elaborating entity "sign_extend" for hierarchy "sign_extend:sign_extend" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 116
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 119
 Warning (10240): Verilog HDL Always Construct warning at alu.v(22): inferring latch(es) for variable "out_signed", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
 Warning (10240): Verilog HDL Always Construct warning at alu.v(22): inferring latch(es) for variable "out_unsigned", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
 Warning (10240): Verilog HDL Always Construct warning at alu.v(22): inferring latch(es) for variable "status", which holds its previous value in one or more paths through the always construct File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
@@ -1288,102 +869,9 @@ Info (10041): Inferred latch for "status[6]" at alu.v(22) File: D:/Study Materia
 Info (10041): Inferred latch for "out_signed[32]" at alu.v(22) File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
 Info (10041): Inferred latch for "status[4]" at alu.v(78) File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 78
 Info (10041): Inferred latch for "status[7]" at alu.v(78) File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 78
-Info (12128): Elaborating entity "error_handle" for hierarchy "error_handle:exception" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 116
-Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:data_mem" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 119
-Warning (10230): Verilog HDL assignment warning at data_memory.v(24): truncated value with size 32 to match size of target (8) File: D:/Study Materials/2-182/KTMT/BTL/data_memory.v Line: 24
+Info (12128): Elaborating entity "error_handle" for hierarchy "error_handle:exception" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 122
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:data_mem" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 125
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "output_hex[0]" merged with LATCH primitive "output_sel[0]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[1]" merged with LATCH primitive "output_sel[1]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[2]" merged with LATCH primitive "output_sel[2]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[3]" merged with LATCH primitive "output_sel[3]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[4]" merged with LATCH primitive "output_sel[4]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[5]" merged with LATCH primitive "output_sel[5]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[6]" merged with LATCH primitive "output_sel[6]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[7]" merged with LATCH primitive "output_sel[7]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[8]" merged with LATCH primitive "output_sel[8]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[9]" merged with LATCH primitive "output_sel[9]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[10]" merged with LATCH primitive "output_sel[10]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[11]" merged with LATCH primitive "output_sel[11]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[12]" merged with LATCH primitive "output_sel[12]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[13]" merged with LATCH primitive "output_sel[13]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[14]" merged with LATCH primitive "output_sel[14]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[15]" merged with LATCH primitive "output_sel[15]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[16]" merged with LATCH primitive "output_sel[16]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[17]" merged with LATCH primitive "output_sel[17]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[18]" merged with LATCH primitive "output_sel[18]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[19]" merged with LATCH primitive "output_sel[19]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[20]" merged with LATCH primitive "output_sel[20]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[21]" merged with LATCH primitive "output_sel[21]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[22]" merged with LATCH primitive "output_sel[22]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[23]" merged with LATCH primitive "output_sel[23]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[24]" merged with LATCH primitive "output_sel[24]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[25]" merged with LATCH primitive "output_sel[25]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Info (13026): Duplicate LATCH primitive "output_hex[26]" merged with LATCH primitive "output_sel[26]" File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-Warning (13012): Latch output_sel[0] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[1] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[2] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[3] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[4] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[5] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[6] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[7] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[8] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[9] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[10] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[11] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[0] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[12] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[13] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[14] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[15] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[16] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[17] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[18] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[19] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[20] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[21] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[22] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[23] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[24] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[25] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[3] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_sel[26] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_hex[27] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_hex[28] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_hex[29] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_hex[30] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[2] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
-Warning (13012): Latch output_hex[31] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 36
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal SYS_output_sel[4] File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 10
 Warning (13012): Latch control_unit:control_unit|master_control[2] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
     Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch control_unit:control_unit|master_control[5] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
@@ -1392,51 +880,51 @@ Warning (13012): Latch control_unit:control_unit|master_control[4] has unsafe be
     Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch control_unit:control_unit|master_control[0] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
     Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-Warning (13012): Latch control_unit:control_unit|master_control[6] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-Warning (13012): Latch control_unit:control_unit|master_control[1] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-Warning (13012): Latch control_unit:control_unit|master_control[7] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch alu:alu|status[6] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
     Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:control_unit|master_control[5] File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Warning (13012): Latch alu:alu|status[3] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
     Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:control_unit|master_control[5] File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
+Warning (13012): Latch control_unit:control_unit|master_control[7] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch control_unit:control_unit|master_control[8] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+Warning (13012): Latch control_unit:control_unit|master_control[6] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+Warning (13012): Latch control_unit:control_unit|master_control[1] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
     Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch control_unit:control_unit|master_control[9] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
     Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:pc|imem_instruction[0] File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13012): Latch alu:alu|status[7] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 78
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal inst_mem:i_mem|imem_instruction[4] File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 2
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal inst_mem:i_mem|WideOr25 File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 10
 Warning (13012): Latch alu:alu|status[4] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 78
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal inst_mem:i_mem|imem_instruction[4] File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 2
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal inst_mem:i_mem|WideOr25 File: D:/Study Materials/2-182/KTMT/BTL/inst_mem.v Line: 10
 Warning (13012): Latch alu:alu|out_signed[32] has unsafe behavior File: D:/Study Materials/2-182/KTMT/BTL/alu.v Line: 22
     Warning (13013): Ports D and ENA on the latch are fed by the same signal control_unit:control_unit|master_control[4] File: D:/Study Materials/2-182/KTMT/BTL/control_unit.v Line: 25
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
     Warning (13310): Register "pc:pc|imem_instruction[0]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[0]~_emulated" and latch "pc:pc|imem_instruction[0]~25" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[7]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[7]~_emulated" and latch "pc:pc|imem_instruction[7]~30" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[6]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[6]~_emulated" and latch "pc:pc|imem_instruction[6]~35" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[5]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[5]~_emulated" and latch "pc:pc|imem_instruction[5]~40" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[1]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[1]~_emulated" and latch "pc:pc|imem_instruction[1]~30" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[2]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[2]~_emulated" and latch "pc:pc|imem_instruction[2]~35" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[3]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[3]~_emulated" and latch "pc:pc|imem_instruction[3]~40" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
     Warning (13310): Register "pc:pc|imem_instruction[4]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[4]~_emulated" and latch "pc:pc|imem_instruction[4]~45" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[3]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[3]~_emulated" and latch "pc:pc|imem_instruction[3]~50" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[2]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[2]~_emulated" and latch "pc:pc|imem_instruction[2]~55" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
-    Warning (13310): Register "pc:pc|imem_instruction[1]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[1]~_emulated" and latch "pc:pc|imem_instruction[1]~60" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[5]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[5]~_emulated" and latch "pc:pc|imem_instruction[5]~50" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[6]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[6]~_emulated" and latch "pc:pc|imem_instruction[6]~55" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
+    Warning (13310): Register "pc:pc|imem_instruction[7]" is converted into an equivalent circuit using register "pc:pc|imem_instruction[7]~_emulated" and latch "pc:pc|imem_instruction[7]~60" File: D:/Study Materials/2-182/KTMT/BTL/pc.v Line: 15
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_RW" is stuck at GND File: D:/Study Materials/2-182/KTMT/BTL/SYS_Master.v Line: 5
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 552 registers lost all their fanouts during netlist optimizations.
+Info (17049): 267 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Study Materials/2-182/KTMT/BTL/output_files/SingleClock.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2434 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3788 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 21 input pins
     Info (21059): Implemented 94 output pins
-    Info (21061): Implemented 2319 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 123 warnings
-    Info: Peak virtual memory: 4876 megabytes
-    Info: Processing ended: Sun Jun 09 19:03:15 2019
-    Info: Elapsed time: 00:00:25
-    Info: Total CPU time (on all processors): 00:00:43
+    Info (21061): Implemented 3673 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 50 warnings
+    Info: Peak virtual memory: 4900 megabytes
+    Info: Processing ended: Wed Jun 12 13:49:23 2019
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:59
 
 
 +------------------------------------------+

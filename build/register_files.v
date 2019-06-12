@@ -10,15 +10,13 @@ module register_files(
   input clk, reset, enable
 );
   reg [31:0] reg_memory[31:0];
-  reg error_sig;
  
-  assign error_toggle = error_sig;
+  assign error_toggle = (write_register == 5'd0) ? 1'b1 : 1'b0;
   assign read_data_1 = (read_register_1 == 5'd0) ? 32'd0 : reg_memory[read_register_1];
   assign read_data_2 = (read_register_2 == 5'd0) ? 32'd0: reg_memory[read_register_2];
 
   always@(negedge clk, negedge reset, negedge enable) begin
 	if(!reset) begin
-		error_sig <= 1'b0;
 		reg_memory[0] <= 32'd0;
 		reg_memory[1] <= 32'd0;
 		reg_memory[2] <= 32'd0;
@@ -54,9 +52,7 @@ module register_files(
 	end
 	else if(!enable) reg_memory[write_register] <= 32'bx;
 	else begin
-				if(write_switch && write_register == 5'b0) 
-					error_sig <= 1'b1;
-				else if(write_switch && !error_sig && enable)
+				if(write_switch)
 					reg_memory[write_register] <= write_data;
 		end
   end

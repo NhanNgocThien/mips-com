@@ -3,207 +3,255 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'SYS_clk'
-Slack : -42.839
-TNS   : -20882.720
+Slack : -39.806
+TNS   : -52733.825
 
-Type  : Slow 1200mV 85C Model Setup 'SYS_output_sel[0]'
-Slack : -38.337
-TNS   : -1102.242
+Type  : Slow 1200mV 85C Model Setup 'SW'
+Slack : -39.430
+TNS   : -2234.975
 
 Type  : Slow 1200mV 85C Model Setup 'SYS_load'
-Slack : -36.804
-TNS   : -395.836
+Slack : -31.477
+TNS   : -380.717
 
-Type  : Slow 1200mV 85C Model Setup 'SYS_pc_load[0]'
-Slack : -35.043
-TNS   : -369.318
+Type  : Slow 1200mV 85C Model Setup 'lcd:lcd|CLOCK[15]'
+Slack : -1.840
+TNS   : -12.419
 
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : -22.684
-TNS   : -287.807
-
-Type  : Slow 1200mV 85C Model Hold 'SYS_pc_load[0]'
-Slack : -18.798
-TNS   : -101.341
+Slack : -1.693
+TNS   : -18.508
 
 Type  : Slow 1200mV 85C Model Hold 'SYS_load'
-Slack : -17.018
-TNS   : -76.364
+Slack : -17.223
+TNS   : -73.304
 
-Type  : Slow 1200mV 85C Model Hold 'SYS_output_sel[0]'
-Slack : -1.952
-TNS   : -24.486
-
-Type  : Slow 1200mV 85C Model Hold 'SYS_clk'
-Slack : -0.140
-TNS   : -0.279
+Type  : Slow 1200mV 85C Model Hold 'lcd:lcd|CLOCK[15]'
+Slack : 0.084
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
-Slack : 0.396
+Slack : 0.400
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'SW'
+Slack : 0.440
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'SYS_clk'
+Slack : 0.660
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'SYS_clk'
-Slack : -21.377
-TNS   : -629.309
+Slack : -20.341
+TNS   : -525.314
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
+Slack : -2.117
+TNS   : -33.872
+
+Type  : Slow 1200mV 85C Model Recovery 'lcd:lcd|CLOCK[15]'
+Slack : -1.431
+TNS   : -13.894
+
+Type  : Slow 1200mV 85C Model Removal 'lcd:lcd|CLOCK[15]'
+Slack : 0.077
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'SYS_clk'
-Slack : 1.573
+Slack : 0.210
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
+Slack : 0.936
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SYS_load'
-Slack : -11.289
-TNS   : -23033.105
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SYS_pc_load[0]'
-Slack : -11.245
-TNS   : -23034.721
+Slack : -12.458
+TNS   : -15554.309
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SYS_clk'
 Slack : -3.000
-TNS   : -879.000
+TNS   : -2112.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SW'
+Slack : -3.000
+TNS   : -91.500
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -79.500
+TNS   : -27.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SYS_output_sel[0]'
-Slack : -3.000
-TNS   : -3.000
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lcd:lcd|CLOCK[15]'
+Slack : -1.500
+TNS   : -16.500
 
 Type  : Slow 1200mV 0C Model Setup 'SYS_clk'
-Slack : -39.359
-TNS   : -19171.488
+Slack : -36.508
+TNS   : -48327.003
 
-Type  : Slow 1200mV 0C Model Setup 'SYS_output_sel[0]'
-Slack : -35.119
-TNS   : -1009.159
+Type  : Slow 1200mV 0C Model Setup 'SW'
+Slack : -36.144
+TNS   : -2045.501
 
 Type  : Slow 1200mV 0C Model Setup 'SYS_load'
-Slack : -33.765
-TNS   : -361.224
+Slack : -29.063
+TNS   : -347.782
 
-Type  : Slow 1200mV 0C Model Setup 'SYS_pc_load[0]'
-Slack : -32.110
-TNS   : -336.614
+Type  : Slow 1200mV 0C Model Setup 'lcd:lcd|CLOCK[15]'
+Slack : -1.578
+TNS   : -10.323
 
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -20.662
-TNS   : -260.832
-
-Type  : Slow 1200mV 0C Model Hold 'SYS_pc_load[0]'
-Slack : -17.218
-TNS   : -92.652
+Slack : -1.429
+TNS   : -15.168
 
 Type  : Slow 1200mV 0C Model Hold 'SYS_load'
-Slack : -15.536
-TNS   : -69.173
+Slack : -15.897
+TNS   : -67.471
 
-Type  : Slow 1200mV 0C Model Hold 'SYS_output_sel[0]'
-Slack : -1.731
-TNS   : -21.357
-
-Type  : Slow 1200mV 0C Model Hold 'SYS_clk'
-Slack : -0.136
-TNS   : -0.271
+Type  : Slow 1200mV 0C Model Hold 'lcd:lcd|CLOCK[15]'
+Slack : 0.081
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.347
+Slack : 0.358
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'SW'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'SYS_clk'
+Slack : 0.602
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'SYS_clk'
-Slack : -19.500
-TNS   : -572.945
+Slack : -18.478
+TNS   : -476.367
 
-Type  : Slow 1200mV 0C Model Removal 'SYS_clk'
-Slack : 1.545
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : -1.877
+TNS   : -30.032
+
+Type  : Slow 1200mV 0C Model Recovery 'lcd:lcd|CLOCK[15]'
+Slack : -1.238
+TNS   : -11.980
+
+Type  : Slow 1200mV 0C Model Removal 'lcd:lcd|CLOCK[15]'
+Slack : 0.093
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SYS_pc_load[0]'
-Slack : -10.551
-TNS   : -20739.078
+Type  : Slow 1200mV 0C Model Removal 'SYS_clk'
+Slack : 0.222
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 0.923
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SYS_load'
-Slack : -10.509
-TNS   : -20733.657
+Slack : -11.697
+TNS   : -14028.729
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SYS_clk'
 Slack : -3.000
-TNS   : -879.000
+TNS   : -2112.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SW'
+Slack : -3.000
+TNS   : -91.500
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -79.500
+TNS   : -27.000
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SYS_output_sel[0]'
-Slack : -3.000
-TNS   : -3.000
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lcd:lcd|CLOCK[15]'
+Slack : -1.500
+TNS   : -16.500
 
 Type  : Fast 1200mV 0C Model Setup 'SYS_clk'
-Slack : -21.514
-TNS   : -10407.141
+Slack : -20.070
+TNS   : -26667.273
 
-Type  : Fast 1200mV 0C Model Setup 'SYS_output_sel[0]'
-Slack : -19.953
-TNS   : -573.253
+Type  : Fast 1200mV 0C Model Setup 'SW'
+Slack : -19.842
+TNS   : -1123.555
 
 Type  : Fast 1200mV 0C Model Setup 'SYS_load'
-Slack : -19.327
-TNS   : -203.957
+Slack : -16.732
+TNS   : -201.046
 
-Type  : Fast 1200mV 0C Model Setup 'SYS_pc_load[0]'
-Slack : -18.431
-TNS   : -190.538
+Type  : Fast 1200mV 0C Model Setup 'lcd:lcd|CLOCK[15]'
+Slack : -0.967
+TNS   : -2.166
 
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -11.716
-TNS   : -122.487
-
-Type  : Fast 1200mV 0C Model Hold 'SYS_pc_load[0]'
-Slack : -9.660
-TNS   : -53.705
+Slack : -0.876
+TNS   : -2.312
 
 Type  : Fast 1200mV 0C Model Hold 'SYS_load'
-Slack : -8.666
-TNS   : -40.441
+Slack : -8.936
+TNS   : -38.888
 
-Type  : Fast 1200mV 0C Model Hold 'SYS_output_sel[0]'
-Slack : -1.036
-TNS   : -13.865
-
-Type  : Fast 1200mV 0C Model Hold 'SYS_clk'
-Slack : -0.195
-TNS   : -0.507
+Type  : Fast 1200mV 0C Model Hold 'lcd:lcd|CLOCK[15]'
+Slack : -0.032
+TNS   : -0.032
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.176
+Slack : 0.184
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'SW'
+Slack : 0.199
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'SYS_clk'
+Slack : 0.238
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'SYS_clk'
-Slack : -10.316
-TNS   : -300.465
+Slack : -9.961
+TNS   : -253.904
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : -1.217
+TNS   : -19.472
+
+Type  : Fast 1200mV 0C Model Recovery 'lcd:lcd|CLOCK[15]'
+Slack : -0.889
+TNS   : -8.642
 
 Type  : Fast 1200mV 0C Model Removal 'SYS_clk'
-Slack : 0.600
+Slack : -0.028
+TNS   : -0.084
+
+Type  : Fast 1200mV 0C Model Removal 'lcd:lcd|CLOCK[15]'
+Slack : 0.056
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SYS_pc_load[0]'
-Slack : -6.188
-TNS   : -10091.562
+Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 0.393
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SYS_load'
-Slack : -6.058
-TNS   : -9950.122
+Slack : -6.875
+TNS   : -6753.082
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SYS_clk'
 Slack : -3.000
-TNS   : -712.273
+TNS   : -1724.990
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SW'
+Slack : -3.000
+TNS   : -73.103
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -55.117
+TNS   : -19.176
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SYS_output_sel[0]'
-Slack : -3.000
-TNS   : -3.000
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lcd:lcd|CLOCK[15]'
+Slack : -1.000
+TNS   : -11.000
 
 ------------------------------------------------------------

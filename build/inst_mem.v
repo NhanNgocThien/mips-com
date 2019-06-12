@@ -33,12 +33,12 @@ module inst_mem(
 					// j -10
 					32'd36: new_instruction <= 32'b00001011111111111111111111110110;
 // Exception //
-					32'd44: new_instruction <= 32'b0;
-					32'd48: new_instruction <= 32'b111111xxxxxxxxxxxxxxxxxxxxxxxxxx;
+					32'd64: new_instruction <= 32'b0;
+					32'd68: new_instruction <= 32'b11111111111111111111111111111111;
 					// lw $t1, 2($0)
-					32'd52: new_instruction <= 32'b10001100000010010000000000000010;
+					32'd72: new_instruction <= 32'b10001100000010010000000000000010;
 					// sw $t1, 2($0)
-					32'd56: new_instruction <= 32'b10101100000010010000000000000010;
+					32'd76: new_instruction <= 32'b10101100000010010000000000000010;
 					
 // LW + SW + BEQ //				
 					// addi $t0, $0, 4

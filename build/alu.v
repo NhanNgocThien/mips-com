@@ -24,8 +24,8 @@ always @(*) begin
 	4'b0010: begin // Add both R and I 
 		out_signed[32:0] = {alu_operand_1[31] , alu_operand_1[31:0]} + {alu_operand_2[31], alu_operand_2[31:0]};
 		out_unsigned[32:0] = {1'b0, alu_operand_1[31:0]} + {1'b0, alu_operand_2[31:0]};
-		if ((out_signed[32] ^ out_signed[31]) == 1'b1) status[6] = 1'b1; // overflow
-				else status[6] = 1'b0;
+		if ((out_signed[32] == 1'b1 && out_signed[31] == 1'b1) || (out_signed[32] == 1'b0 && out_signed[31] == 1'b0)) status[6] = 1'b0; // overflow
+				else status[6] = 1'b1;
 		begin    
 			if (!out_signed[1] && !out_signed[0]) status[3] = 1'b0;
 				else status[3] = 1'b1;
@@ -37,8 +37,8 @@ always @(*) begin
 	4'b0110: begin // Sub R
 		out_signed[32:0] = {alu_operand_1[31] , alu_operand_1[31:0]} + (~{alu_operand_2[31], alu_operand_2[31:0]} + 1'b1);
 		out_unsigned[32:0] = {1'b0, alu_operand_1[31:0]} + {1'b0, (~(alu_operand_2[31:0]) + 1'b1)};
-		if ((out_signed[32] ^ out_signed[31]) == 1'b1) status[6] = 1'b1; // overflow
-				else status[6] = 1'b0;
+		if ((out_signed[32] == 1'b1 && out_signed[31] == 1'b1) || (out_signed[32] == 1'b0 && out_signed[31] == 1'b0)) status[6] = 1'b0; // overflow
+				else status[6] = 1'b1;
 		begin
 			if (!out_signed[1] && !out_signed[0]) status[3] = 1'b0;
 				else status[3] = 1'b1;

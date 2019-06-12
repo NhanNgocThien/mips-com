@@ -1,0 +1,124 @@
+module lcd(
+	input CLOCK,
+	input RST,
+	input CLK,
+	input LOAD,
+	input SW,
+	input [31:0] DATA,
+	input [31:0] PC,
+	input [7:0]  SEL,
+	output reg LCD_EN,
+	output reg LCD_RS,
+	output LCD_RW,
+	output reg [7:0] LCD_DATA
+);
+	parameter	S_INIT		=	0;	// Initialize state
+	parameter	S_IDLE		=	1;	// Standby state
+	parameter	S_PUSH		=	2;	// Push command to LCD state
+	parameter	S_LOAD		=	3;	// Load command state
+
+	reg [5:0] addr;
+	reg [2:0] state;
+	reg [2:0] next_state;
+	wire RESET = !CLK || !RST || !LOAD || !SW; 
+	
+	wire [7:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
+	LCD_decoder H0 (DATA[ 3: 0], HEX0);
+	LCD_decoder H1 (DATA[ 7: 4], HEX1);
+	LCD_decoder H2 (DATA[11: 8], HEX2);
+	LCD_decoder H3 (DATA[15:12], HEX3);
+	LCD_decoder H4 (DATA[19:16], HEX4);
+	LCD_decoder H5 (DATA[23:20], HEX5);
+	LCD_decoder H6 (DATA[27:24], HEX6);
+	LCD_decoder H7 (DATA[31:28], HEX7);
+
+	wire [7:0] PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7;
+	LCD_decoder P0 (PC[ 3: 0], PC0);
+	LCD_decoder P1 (PC[ 7: 4], PC1);
+	LCD_decoder P2 (PC[11: 8], PC2);
+	LCD_decoder P3 (PC[15:12], PC3);
+	LCD_decoder P4 (PC[19:16], PC4);
+	LCD_decoder P5 (PC[23:20], PC5);
+	LCD_decoder P6 (PC[27:24], PC6);
+	LCD_decoder P7 (PC[31:28], PC7);
+	
+	wire [7:0] SEL0, SEL1;
+	LCD_decoder S0 (SEL[ 3: 0], SEL0);
+	LCD_decoder S1 (SEL[ 7: 4], SEL1);
+	
+	always @(posedge CLOCK, posedge RESET) begin
+		if (RESET) begin
+			state 					<= S_INIT;
+			addr						<= 0;
+		end
+		else begin
+			case (state)
+				S_INIT: begin
+					LCD_EN			<= 0;
+					addr				<=	0;
+					state 			<= S_PUSH;
+				end
+				S_IDLE: begin
+					state				<= S_IDLE;
+				end
+				S_PUSH: begin
+					LCD_EN			<= 1;
+					addr				<=	addr + 1;
+					state				<= S_LOAD;
+				end
+				S_LOAD: begin
+					LCD_EN			<= 0;
+					state				<= (addr > 35 ? S_IDLE : S_PUSH);
+				end
+				default: state		<= S_IDLE;
+			endcase
+		end
+	end
+	
+	always @(*) begin
+		case (addr)
+			 0: {LCD_RS, LCD_DATA} = 9'b0_0011_1000;				// Function set
+			 1: {LCD_RS, LCD_DATA} = 9'b0_0000_0110;				// Entry mode set
+			 2: {LCD_RS, LCD_DATA} = 9'b0_0000_0001;				// Clear display
+												
+			 3: {LCD_RS, LCD_DATA} = {1'b1,  "O"};
+			 4: {LCD_RS, LCD_DATA} = {1'b1,  "U"};
+			 5: {LCD_RS, LCD_DATA} = {1'b1,  "T"};
+			 6: {LCD_RS, LCD_DATA} = {1'b1,  "P"};
+			 7: {LCD_RS, LCD_DATA} = {1'b1,  "U"};
+			 8: {LCD_RS, LCD_DATA} = {1'b1,  "T"};
+			 9: {LCD_RS, LCD_DATA} = {1'b1,  ":"};
+			10: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			11: {LCD_RS, LCD_DATA} = {1'b1, HEX7};
+			12: {LCD_RS, LCD_DATA} = {1'b1, HEX6};
+			13: {LCD_RS, LCD_DATA} = {1'b1, HEX5};
+			14: {LCD_RS, LCD_DATA} = {1'b1, HEX4};
+			15: {LCD_RS, LCD_DATA} = {1'b1, HEX3};
+			16: {LCD_RS, LCD_DATA} = {1'b1, HEX2};
+			17: {LCD_RS, LCD_DATA} = {1'b1, HEX1};
+			18: {LCD_RS, LCD_DATA} = {1'b1, HEX0};
+			
+			19: {LCD_RS, LCD_DATA} = 9'b0_1100_0000;				// Newline
+			
+			20: {LCD_RS, LCD_DATA} = {1'b1,  "P"};
+			21: {LCD_RS, LCD_DATA} = {1'b1,  "C"};
+			22: {LCD_RS, LCD_DATA} = {1'b1,  ":"};
+			23: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			24: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			25: {LCD_RS, LCD_DATA} = {1'b1,  PC1};
+			26: {LCD_RS, LCD_DATA} = {1'b1,  PC0};
+			27: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			28: {LCD_RS, LCD_DATA} = {1'b1,  "S"};
+			29: {LCD_RS, LCD_DATA} = {1'b1,  "E"};
+			30: {LCD_RS, LCD_DATA} = {1'b1,  "L"};
+			31: {LCD_RS, LCD_DATA} = {1'b1,  ":"};
+			32: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			33: {LCD_RS, LCD_DATA} = {1'b1,  " "};
+			34: {LCD_RS, LCD_DATA} = {1'b1, SEL1};
+			35: {LCD_RS, LCD_DATA} = {1'b1, SEL0};
+			default: {LCD_RS, LCD_DATA} = 9'b0_1000_0000;		// Set cursor to the beginning position
+		endcase 
+	end
+	
+	assign LCD_RW = 0;
+endmodule

@@ -1,5 +1,5 @@
 Assembler report for SingleClock
-Sun Jun 09 19:14:57 2019
+Mon Jun 10 22:49:35 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Jun 09 19:14:57 2019 ;
+; Assembler Status      ; Successful - Mon Jun 10 22:49:35 2019 ;
 ; Revision Name         ; SingleClock                           ;
 ; Top-level Entity Name ; SYS_Master                            ;
 ; Family                ; Cyclone IV GX                         ;
@@ -68,8 +68,8 @@ agreement for further details.
 ; Option         ; Setting                                                                 ;
 +----------------+-------------------------------------------------------------------------+
 ; Device         ; EP4CGX150DF31C7                                                         ;
-; JTAG usercode  ; 0x008B7A6D                                                              ;
-; Checksum       ; 0x008B7A6D                                                              ;
+; JTAG usercode  ; 0x0097E08F                                                              ;
+; Checksum       ; 0x0097E08F                                                              ;
 +----------------+-------------------------------------------------------------------------+
 
 
@@ -79,15 +79,15 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Jun 09 19:14:48 2019
+    Info: Processing started: Mon Jun 10 22:49:30 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off SingleClock -c SingleClock
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4779 megabytes
-    Info: Processing ended: Sun Jun 09 19:14:58 2019
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 4781 megabytes
+    Info: Processing ended: Mon Jun 10 22:49:35 2019
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
 
 

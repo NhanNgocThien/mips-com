@@ -380,11 +380,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "SYS_output_sel[2]",
+					"name" : "SYS_output_sel[1]",
 					"strict" : false
 				},
 				{
-					"name" : "SYS_output_sel[1]",
+					"name" : "SYS_output_sel[2]",
 					"strict" : false
 				},
 				{
@@ -396,10 +396,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "SYS_output_sel[7]",
-					"strict" : false
-				},
-				{
 					"name" : "SYS_output_sel[5]",
 					"strict" : false
 				},
@@ -408,19 +404,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
-					"strict" : false
-				},
-				{
-					"name" : "SYS_clk",
-					"strict" : false
-				},
-				{
-					"name" : "SYS_reset",
-					"strict" : false
-				},
-				{
-					"name" : "SYS_load",
+					"name" : "SYS_output_sel[7]",
 					"strict" : false
 				},
 				{
@@ -428,19 +412,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "SYS_pc_load[2]",
-					"strict" : false
-				},
-				{
 					"name" : "SYS_pc_load[0]",
 					"strict" : false
 				},
 				{
-					"name" : "SYS_pc_load[7]",
-					"strict" : false
-				},
-				{
-					"name" : "SYS_pc_load[6]",
+					"name" : "SYS_reset",
 					"strict" : false
 				},
 				{
@@ -448,7 +424,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "SYS_pc_load[5]",
+					"name" : "SYS_pc_load[2]",
 					"strict" : false
 				},
 				{
@@ -456,7 +432,31 @@
 					"strict" : false
 				},
 				{
+					"name" : "SYS_clk",
+					"strict" : false
+				},
+				{
+					"name" : "SYS_load",
+					"strict" : false
+				},
+				{
 					"name" : "SYS_pc_load[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SYS_pc_load[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SYS_pc_load[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SYS_pc_load[7]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
 					"strict" : false
 				}
 			]
